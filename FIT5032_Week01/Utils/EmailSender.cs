@@ -1,10 +1,8 @@
-﻿/*
-using SendGrid;
+﻿using SendGrid;
 using SendGrid.Helpers.Mail;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -28,4 +26,3 @@ namespace FIT5032_Week01.Utils
 
     }
 }
-*/

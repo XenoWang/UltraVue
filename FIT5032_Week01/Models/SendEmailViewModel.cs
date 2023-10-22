@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using System.Net.Mail;
 
 namespace FIT5032_Week01.Models
 {
-    public class EmailViewModel
+    public class SendEmailViewModel
     {
-
         [Display(Name = "Email address")]
         [Required(ErrorMessage = "Please enter an email address.")]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
@@ -20,5 +18,6 @@ namespace FIT5032_Week01.Models
 
         [Required(ErrorMessage = "Please enter the contents")]
         public string Contents { get; set; }
+
     }
 }

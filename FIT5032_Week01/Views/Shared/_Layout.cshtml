@@ -51,10 +51,10 @@
 
                     @if (User.IsInRole("Staff") || User.IsInRole("Admin"))
                     {
-                        <li>@Html.ActionLink("Email", "Email", "Email", new { area = "" }, new { @class = "nav-link" })</li>
+
                         <li>@Html.ActionLink("Mock Data", "Index", "MOCK_DATA", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Mock Data 2", "Index", "Mock2", new { area = "" }, new { @class = "nav-link" })</li>
-
+                        <li>@Html.ActionLink("Send Email", "Send_Email", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

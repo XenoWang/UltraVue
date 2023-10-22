@@ -1,4 +1,5 @@
 ﻿using FIT5032_Week01.Models;
+using FIT5032_Week01.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,9 @@ namespace FIT5032_Week01.Controllers
         [RequireHttps]
         public ActionResult Index()
         {
+            // Please comment out these codes once you have registered your API key.
+            //EmailSender es = new EmailSender();
+            //es.RegisterAPIKey();
             return View();
         }
 
@@ -22,6 +26,7 @@ namespace FIT5032_Week01.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -29,13 +34,15 @@ namespace FIT5032_Week01.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Staff,Admin")]
         public ActionResult Send_Email()
         {
-            return View(new EmailViewModel());
+            return View(new SendEmailViewModel());
         }
-        /*
+
         [HttpPost]
-        public ActionResult Send_Email(EmailViewModel model)
+        [Authorize(Roles = "Staff,Admin")]
+        public ActionResult Send_Email(SendEmailViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -52,7 +59,7 @@ namespace FIT5032_Week01.Controllers
 
                     ModelState.Clear();
 
-                    return View(new EmailViewModel());
+                    return View(new SendEmailViewModel());
                 }
                 catch
                 {
@@ -62,6 +69,5 @@ namespace FIT5032_Week01.Controllers
 
             return View();
         }
-        */
     }
 }
