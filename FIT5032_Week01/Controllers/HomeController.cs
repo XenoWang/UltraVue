@@ -1,10 +1,16 @@
 ﻿using FIT5032_Week01.Models;
-using FIT5032_Week01.Utils;
+using SendGrid.Helpers.Mail;
+using SendGrid;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Description;
+using System.IO;
 
 namespace FIT5032_Week01.Controllers
 {
@@ -40,34 +46,47 @@ namespace FIT5032_Week01.Controllers
             return View(new SendEmailViewModel());
         }
 
+
         [HttpPost]
         [Authorize(Roles = "Staff,Admin")]
-        public ActionResult Send_Email(SendEmailViewModel model)
+        public async Task<ActionResult> Send_Email(SendEmailViewModel model)
         {
             if (ModelState.IsValid)
             {
-                try
+                var apiKey = "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"; // Replace with your SendGrid API key
+
+                var client = new SendGridClient(apiKey);
+                var from = new EmailAddress("wlh20000704@163.com", "XenoW"); // Replace with your email and name
+                var to = new EmailAddress("wlh20000704@163.com"); // Replace with the recipient's email
+                var subject = "Test";
+                var plainTextContent = "Email content in plain text";
+                var htmlContent = $"<p>Email From: {model.ToEmail}</p><p>Message:</p><p>{model.Contents}</p>";
+
+                var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+
+                if (model.Upload != null && model.Upload.ContentLength > 0)
                 {
-                    String toEmail = model.ToEmail;
-                    String subject = model.Subject;
-                    String contents = model.Contents;
+                    var fileBytes = new byte[model.Upload.InputStream.Length];
+                    model.Upload.InputStream.Read(fileBytes, 0, fileBytes.Length);
 
-                    EmailSender es = new EmailSender();
-                    es.Send(toEmail, subject, contents);
+                    var base64Content = Convert.ToBase64String(fileBytes);
 
-                    ViewBag.Result = "Email has been send.";
-
-                    ModelState.Clear();
-
-                    return View(new SendEmailViewModel());
+                    msg.AddAttachment(model.Upload.FileName, base64Content, model.Upload.ContentType, "attachment");
                 }
-                catch
-                {
-                    return View();
-                }
+
+                var response = await client.SendEmailAsync(msg);
+
+                // Set the result message
+                ViewBag.Result = "Email has been sent.";
+
+                // Clear the model state
+                ModelState.Clear();
+
+                // Return the view with a new model
+                return View(new SendEmailViewModel());
             }
 
-            return View();
+            return View(model);
         }
     }
 }

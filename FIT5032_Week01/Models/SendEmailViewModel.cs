@@ -19,5 +19,7 @@ namespace FIT5032_Week01.Models
         [Required(ErrorMessage = "Please enter the contents")]
         public string Contents { get; set; }
 
+        public HttpPostedFileBase Upload { get; set; }
+
     }
 }

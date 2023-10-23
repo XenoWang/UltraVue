@@ -1,0 +1,155 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Nunito);
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Nunito;
+}
+
+body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/* Center all slides */
+.slide {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 -1px 15px rgba(0, 0, 0, 0.7);
+    transform-style: inherit;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    /* Add this rule to reduce the gap between slides */
+.slide + .slide {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+img {
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    width: 320px;
+    height: 240px;
+    transform: translateZ(0.25px) scale(0.75) translateX(-94%) translateY(-100%) rotate(2deg);
+    padding: 10px;
+    border-radius: 5px;
+    background: rgba(240, 230, 220, 0.7);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+}
+
+    img:last-of-type {
+        transform: translateZ(0.4px) scale(0.6) translateX(-104%) translateY(-40%) rotate(-5deg);
+    }
+
+.title {
+    width: 50%;
+    padding: 5%;
+    border-radius: 5px;
+    background: rgba(240, 230, 220, 0.7);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+}
+
+.slide:nth-child(2n + 1) .title {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.slide:nth-child(2n) .title {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.slide.header {
+    text-align: center;
+    font-size: 175%;
+    color: #fff;
+    text-shadow: 0 2px 2px #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+}
+
+
+
+/* Specify background images for individual slides */
+#title {
+    background-image: url("https://todaysparent.mblycdn.com/uploads/tp/2019/10/what-to-expect-at-your-20-week-ultrasound-1280x960.jpg");
+    z-index: 2;
+    justify-content: flex-start; /* Adjust the alignment of the title */
+}
+
+h1{
+    font-size: 8vw;
+    color: forestgreen;
+}
+
+p1{
+    font-size:2vw;
+    color: green;
+}
+
+#title h2 {
+    transform: translateZ(0.25px) scale(0.75);
+    transform-origin: 50% 100%;
+}
+
+#slide1:before {
+    background-image: url("https://www.itnonline.com/sites/default/files/field/image/Ultrasound_Abdominal_GE_Vivid%20E95_PR.jpg");
+    transform: translateZ(-1px) scale(2);
+}
+
+#slide1 {
+    background-image: url("https://commercialeyes.com.au/wp-content/uploads/2022/10/iStock-1347197740-1.jpg");
+    background-attachment: fixed; 
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+}
+
+
+#slide2 {
+    background-image: url("https://www.itnonline.com/sites/default/files/field/image/Ultrasound_Abdominal_GE_Vivid%20E95_PR.jpg");
+    z-index: 2;
+}
+
+#slide3 {
+    background-image: url("https://www.directradiology.com.au/media/0hvncc5q/capitol-radiology-19.jpg"); 
+}
+
+#slide4 {
+    background-image: url("https://ultrasoundcare.b-cdn.net/wp-content/uploads/2022/01/What-is-the-19-20-week-scan-or-Morphology-scan-1024x710.webp");
+}
+
+#slide5 {
+    background-image: url("https://my.clevelandclinic.org/-/scassets/images/org/health/articles/4995-ultrasound-imaging");
+}
+
+#slide6 {
+    background-image: url("https://www.mic.ca/wp-content/uploads/2021/03/IM3348_35-scaled.jpg");
+}
+
+#slide7 {
+    background-image: url("https://jonesradiology.com.au/wp-content/uploads/2018/07/Banner-UltraSound-2880x1200-2560x960-c-default.jpg");
+}
+
+#slide8 {
+    background-image: url("https://envisionmi.com.au/wp-content/uploads/2022/11/ultrasound-services-home-page.jpg");
+}
+
+#slide9 {
+    background: #D3D3D3;
+}

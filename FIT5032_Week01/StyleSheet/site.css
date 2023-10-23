@@ -1,0 +1,9 @@
+﻿/* Set a lighter background color */
+body {
+    background-color: #d3d3d3; /* Change to the desired lighter color */
+}
+
+/* Set the text color to black */
+body, h1, h2, p, a {
+    color: #000; /* Black */
+}
